@@ -1,6 +1,21 @@
+$(document).ready(function() {
+  $('form#trianglelengths').submit(function(event) {
 
-
-
+    const a = parseInt($("#side1").val());
+    const b = parseInt($("#side2").val());
+    const c = parseInt($("#side3").val());
+    if ( a+b <= c || b+c <= a || c+a <= b) {
+      $('#notatriangle').show();
+    } else if (a === b && b === c) {
+      $('#equilateral').show();
+    } else if (a === b || b === c || a === c) {
+      $('#isoceles').show();
+    } else {
+      $('#scalene').show();
+    }
+    event.preventDefault();
+  });
+});
 
 //Equilateral: All sides are equal.
 //Isosceles: Exactly 2 sides are equal.
